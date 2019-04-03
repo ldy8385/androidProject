@@ -20,10 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private EditText editText;
-    private Button button;
+    private Button btn1;
+    private Button btn2;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("match");
+    DatabaseReference myRefD = database.getReference("d2a");
+    DatabaseReference myRefA = database.getReference("a2d");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.textView);
         editText = (EditText) findViewById(R.id.editText);
-        button = (Button) findViewById(R.id.button);
+        btn1 = (Button) findViewById(R.id.button);
+        btn2 = (Button) findViewById(R.id.button2);
 
     }
 
@@ -42,10 +45,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef.setValue(editText.getText().toString());
+                myRefD.setValue(editText.getText().toString());
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myRefA.setValue((editText.getText().toString()));
             }
         });
     }
