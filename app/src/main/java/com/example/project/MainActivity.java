@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRefA.setValue((editText.getText().toString()));
+                myRefA.setValue(editText.getText().toString());
             }
         });
     }
