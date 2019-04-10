@@ -48,13 +48,15 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRefD.setValue(editText.getText().toString());
+//                myRefD.setValue(editText.getText().toString());
+                myRefD.child("aaa").push().setValue(editText.getText().toString());
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRefA.setValue(editText.getText().toString());
+//                myRefA.setValue(editText.getText().toString());
+                myRefA.child("bbb").push().setValue(editText.getText().toString());
             }
         });
     }
