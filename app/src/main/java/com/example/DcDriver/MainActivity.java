@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn1;
     private Button btn2;
     private Button loginBtn;
+    private String name;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser userInfo = FirebaseAuth.getInstance().getCurrentUser();
@@ -31,19 +32,26 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference myRefA = database.getReference("a2d");
     LoginManager loginManager = LoginManager.getInstance();
 
-    String name = userInfo.getDisplayName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(userInfo == null){
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }else{
+           name = userInfo.getDisplayName();
+            textView.setText(name + "님 반갑습니다.");
+        }
+
         textView = (TextView) findViewById(R.id.textView);
         btn1 = (Button) findViewById(R.id.button);
         btn2 = (Button) findViewById(R.id.button2);
         loginBtn = findViewById(R.id.login_button);
 
-        textView.setText(name+"님 반갑습니다.");
     }
 
     @Override
