@@ -1,21 +1,15 @@
-package com.example.project;
+package com.example.DcDriver;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
@@ -37,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         btn1 = (Button) findViewById(R.id.button);
         btn2 = (Button) findViewById(R.id.button2);
 
+        Intent intent = new Intent(this.getIntent());
+        String data = intent.getStringExtra("userInfo");
+        textView.setText(data);
     }
 
     @Override

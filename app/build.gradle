@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.project"
+        applicationId "com.example.DcDriver"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -28,5 +28,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    compile "com.google.firebase:firebase-auth:9.2.1"
 }
 apply plugin: 'com.google.gms.google-services'

@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.DcDriver;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
