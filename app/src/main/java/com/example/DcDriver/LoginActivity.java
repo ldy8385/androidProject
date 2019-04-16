@@ -83,8 +83,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
-//        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-//        startActivity(intent);
     }
 
     private void handleFacebookAccessToken(AccessToken token) {
@@ -97,6 +95,9 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // 로그인 성공
                             Toast.makeText(LoginActivity.this, "성공", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         } else {
                             // 로그인 실패
                             Toast.makeText(LoginActivity.this, "실패", Toast.LENGTH_SHORT).show();
