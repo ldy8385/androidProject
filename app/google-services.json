@@ -1,38 +1,42 @@
 {
   "project_info": {
-    "project_number": "238427623110",
-    "firebase_url": "https://taximatching.firebaseio.com",
-    "project_id": "taximatching",
-    "storage_bucket": "taximatching.appspot.com"
+    "project_number": "14576448357",
+    "firebase_url": "https://daelimcarpool.firebaseio.com",
+    "project_id": "daelimcarpool",
+    "storage_bucket": "daelimcarpool.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:238427623110:android:6fddbf0bc1b4e2c3",
+        "mobilesdk_app_id": "1:14576448357:android:5c673465595be158",
         "android_client_info": {
           "package_name": "com.example.DcDriver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "238427623110-tgvamh1q8m2a8j8864ijsagh12iug5bn.apps.googleusercontent.com",
+          "client_id": "14576448357-2cj4erpimdmrsaq3qj900gcbm221bpt4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.DcDriver",
             "certificate_hash": "c2dd6f691da48da251536da37a47944c9bebce1c"
           }
+        },
+        {
+          "client_id": "14576448357-kfo6g2k3lmu1hda7h4tscfk19h22mdj9.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB2QhwGbz21miV3UTHR9Z17MpXfpphVm4w"
+          "current_key": "AIzaSyBpvJHTMfk5J8AJztlZp_1BqpZ9XGlgNF4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "238427623110-1tu95lq1ri0e9hkrve9jkjd0d8iqm98b.apps.googleusercontent.com",
+              "client_id": "14576448357-kfo6g2k3lmu1hda7h4tscfk19h22mdj9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

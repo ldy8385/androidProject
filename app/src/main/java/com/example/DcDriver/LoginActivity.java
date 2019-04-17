@@ -49,9 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                if(user != null){
+                if(userInfo != null){
                     Toast.makeText(LoginActivity.this, "로그인",Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
@@ -104,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-        private void handleFacebookAccessToken(AccessToken token) {
+    private void handleFacebookAccessToken(AccessToken token) {
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         firebaseAuth.signInWithCredential(credential)

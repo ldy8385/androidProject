@@ -20,7 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
-    private EditText editText;
     private Button btn1;
     private Button btn2;
     private Button loginBtn;
@@ -38,20 +37,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(userInfo == null){
+        textView = (TextView) findViewById(R.id.textView);
+
+        if(userInfo != null){
+            name = userInfo.getDisplayName();
+            textView.setText(name + "님 반갑습니다.");
+            Log.e("sadsad",name);
+            Log.e("sadsad",userInfo.toString());
+        }else{
             Intent intent = new Intent(MainActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
-        }else{
-           name = userInfo.getDisplayName();
-            textView.setText(name + "님 반갑습니다.");
+            Log.e("asf","aa");
         }
-
-        textView = (TextView) findViewById(R.id.textView);
         btn1 = (Button) findViewById(R.id.button);
         btn2 = (Button) findViewById(R.id.button2);
         loginBtn = findViewById(R.id.login_button);
-
     }
 
     @Override
