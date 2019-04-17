@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DMatchActivity" />
+        <activity android:name=".PMatchActivity" />
         <activity android:name=".LoginActivity" />
 
         <meta-data

@@ -51,8 +51,8 @@ public class DMatchActivity extends AppCompatActivity {
         BtnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRefD.child(name).removeValue();
-                myRefA.child(name).removeValue();
+                myRefD.child("name").removeValue();
+                myRefA.child("name").removeValue();
                 finish();
             }
         });
@@ -62,7 +62,7 @@ public class DMatchActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        myRefD.child(name).removeValue();
-        myRefA.child(name).removeValue();
+        myRefD.child("name").removeValue();
+        myRefA.child("name").removeValue();
     }
 }

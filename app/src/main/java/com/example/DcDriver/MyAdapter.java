@@ -22,9 +22,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
         }
     }
 
-    private ArrayList<RowInfo> foodInfoArrayList;
-    MyAdapter(ArrayList<RowInfo> foodInfoArrayList){
-        this.foodInfoArrayList = foodInfoArrayList;
+    private ArrayList<RowInfo> rowInfoArrayList;
+    MyAdapter(ArrayList<RowInfo> rowInfoArrayList){
+        this.rowInfoArrayList = rowInfoArrayList;
     }
 
     @Override
@@ -40,12 +40,12 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
-        myViewHolder.ivPicture.setImageResource(foodInfoArrayList.get(position).drawableId);
-        myViewHolder.tvPrice.setText(foodInfoArrayList.get(position).name);
+        myViewHolder.ivPicture.setImageResource(rowInfoArrayList.get(position).drawableId);
+        myViewHolder.tvPrice.setText(rowInfoArrayList.get(position).name);
     }
 
     @Override
     public int getItemCount() {
-        return foodInfoArrayList.size();
+        return rowInfoArrayList.size();
     }
 }

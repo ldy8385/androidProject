@@ -62,7 +62,7 @@ public class DMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                myRefD.setValue(editText.getText().toString());
-                myRefD.child(name).setValue(name);
+                myRefD.child("name").setValue(name);
                 Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
                 startActivity(intent);
             }
@@ -72,7 +72,7 @@ public class DMainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                myRefA.setValue(editText.getText().toString());
 //                myRefA.child("bbb").push().setValue(editText.getText().toString());
-                myRefA.child(name).setValue(name);
+                myRefA.child("name").setValue(name);
                 Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
                 startActivity(intent);
             }

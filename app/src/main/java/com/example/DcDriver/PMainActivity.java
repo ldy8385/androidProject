@@ -26,8 +26,6 @@ public class PMainActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser userInfo = FirebaseAuth.getInstance().getCurrentUser();
-    DatabaseReference myRefD = database.getReference("d2a");
-    DatabaseReference myRefA = database.getReference("a2d");
     LoginManager loginManager = LoginManager.getInstance();
 
 
@@ -61,35 +59,22 @@ public class PMainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                myRefD.setValue(editText.getText().toString());
-                myRefD.child(name).setValue(name);
-                Intent intent = new Intent(PMainActivity.this, DMatchActivity.class);
+                Intent intent = new Intent(PMainActivity.this, PMatchActivity.class);
+                intent.putExtra("value","d2a");
                 startActivity(intent);
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                myRefA.setValue(editText.getText().toString());
-//                myRefA.child("bbb").push().setValue(editText.getText().toString());
-                myRefA.child(name).setValue(name);
-                Intent intent = new Intent(PMainActivity.this, DMatchActivity.class);
+                Intent intent = new Intent(PMainActivity.this, PMatchActivity.class);
+                intent.putExtra("value","a2d");
                 startActivity(intent);
             }
         });
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userInfo.delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d("aa", "User account deleted.");
-                                }
-                            }
-                        });
-                LoginManager.getInstance().logOut();
                 Intent intent = new Intent(PMainActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
