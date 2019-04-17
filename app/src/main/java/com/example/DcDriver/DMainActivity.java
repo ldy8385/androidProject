@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
@@ -18,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class DMainActivity extends AppCompatActivity {
     private TextView textView;
     private Button btn1;
     private Button btn2;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_dmain);
 
         textView = (TextView) findViewById(R.id.textView);
 
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("sadsad",name);
             Log.e("sadsad",userInfo.toString());
         }else{
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            Intent intent = new Intent(DMainActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
             Log.e("asf","aa");
@@ -63,10 +62,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                myRefD.setValue(editText.getText().toString());
-                myRefD.child("aaa").setValue(name);
-                Intent intent = new Intent(MainActivity.this,MatchActivity.class);
+                myRefD.child(name).setValue(name);
+                Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -74,10 +72,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                myRefA.setValue(editText.getText().toString());
 //                myRefA.child("bbb").push().setValue(editText.getText().toString());
-                myRefA.child("bbb").setValue(name);
-                Intent intent = new Intent(MainActivity.this,MatchActivity.class);
+                myRefA.child(name).setValue(name);
+                Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 LoginManager.getInstance().logOut();
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            Intent intent = new Intent(DMainActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
             }

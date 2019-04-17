@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PMainActivity"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="301dp"
+        android:layout_height="25dp"
+        android:text="승객"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="301dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="3dp"
+        android:layout_gravity="center"
+        android:text="TextView"
+        android:textSize="26dp"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="318dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="240dp"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:text="대림대학교 > 안양역"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="318dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:text="안양역 > 대림대학교"/>
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" />
+</LinearLayout>

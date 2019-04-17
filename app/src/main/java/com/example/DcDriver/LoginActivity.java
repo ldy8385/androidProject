@@ -9,15 +9,12 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuth;
 import android.content.Context;
 import android.content.Intent;
@@ -53,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(userInfo != null){
                     Toast.makeText(LoginActivity.this, "로그인",Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), DMainActivity.class);
                     startActivity(intent);
                 }else{
                     Toast.makeText(LoginActivity.this, "로그아웃",Toast.LENGTH_SHORT).show();
@@ -113,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // 로그인 성공
                             Toast.makeText(LoginActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, DMainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
