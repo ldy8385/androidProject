@@ -59,48 +59,52 @@ public class PMatchActivity extends AppCompatActivity {
 
         BtnEnd = findViewById(R.id.BtnEnd);
 
-        if(value == "d2a"){
-            Log.w("asd", "please d");
-            myRefD.addValueEventListener(new ValueEventListener() {
-                String id;
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
-                    MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
-                    mRecyclerView.setAdapter(myAdapter);
+        switch (value) {
+            case "d2a":
 
-                    id = dataSnapshot.getValue(String.class);
-                    rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "aaa"));
-                    Log.w("a", "Value is: " + id);
-                }
+                myRefD.addValueEventListener(new ValueEventListener() {
+                    String id;
 
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-                    Log.w("a", "Failed to read value.", error.toException());
-                }
-            });
-        }else if(value == "a2d"){
-            Log.w("asd", "please a");
-            myRefA.addValueEventListener(new ValueEventListener() {
-                String id;
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
-                    MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
-                    mRecyclerView.setAdapter(myAdapter);
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
+                        MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
+                        mRecyclerView.setAdapter(myAdapter);
 
-                    id = dataSnapshot.getValue(String.class);
-                    rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "aaa"));
-                    Log.w("a", "Value is: " + id);
-                }
+                        id = dataSnapshot.getValue(String.class);
+                        rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, id));
+                        Log.w("a", "Value is: " + id);
+                    }
 
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-                    Log.w("a", "Failed to read value.", error.toException());
-                }
-            });
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w("a", "Failed to read value.", error.toException());
+                    }
+                });
+                break;
+            case "a2d" :
+                myRefA.addValueEventListener(new ValueEventListener() {
+                    String id;
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
+                        MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
+                        mRecyclerView.setAdapter(myAdapter);
+
+                        id = dataSnapshot.getValue(String.class);
+                        rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, id));
+                        Log.w("a", "Value is: " + id);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w("a", "Failed to read value.", error.toException());
+                    }
+                });
+                break;
         }
 
         /*if(value == "d2a"){
