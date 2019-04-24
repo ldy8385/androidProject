@@ -1,15 +1,26 @@
 package com.example.DcDriver;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Handler;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.VideoView;
 
 public class IntroActivity extends AppCompatActivity {
 
     private Button BtnDriver;
     private Button BtnPassenger;
+    private String TAG = "VideoActivity";
+    private VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +46,29 @@ public class IntroActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        videoView = (VideoView) findViewById(R.id.videoView);
+        videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.back));
+        videoView.start();
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
+
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                BtnDriver.setVisibility(View.VISIBLE);
+                BtnPassenger.setVisibility(View.VISIBLE);
+            }
+        },2000);
+
+
+
+
     }
 }

@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DMainActivity"
     android:background="@drawable/bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/layout">
 
+    <VideoView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/videoView"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        />
 
     <Button
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="드라이버"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginTop="450dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/button"
-        android:layout_width="318dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="240dp"
-        android:layout_gravity="center"
-        android:textSize="30dp"
-        android:text="드라이버"/>
-
+        android:visibility="gone"/>
     <Button
-        android:id="@+id/button2"
-        android:layout_width="318dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="승객"
         android:textSize="30dp"
-        android:text="승객"/>
+        android:gravity="center"
+        android:layout_marginTop="550dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button2"
+        android:visibility="gone"/>
 
-</LinearLayout>
+
+
+
+</RelativeLayout>

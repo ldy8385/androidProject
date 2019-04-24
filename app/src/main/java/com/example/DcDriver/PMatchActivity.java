@@ -82,7 +82,7 @@ public class PMatchActivity extends AppCompatActivity {
                         Log.w("a", "Failed to read value.", error.toException());
                     }
                 });
-                break;
+            break;
             case "a2d" :
                 myRefA.addValueEventListener(new ValueEventListener() {
                     String id;
@@ -131,8 +131,8 @@ public class PMatchActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         myRefD.child("name").removeValue();
         myRefA.child("name").removeValue();
     }
