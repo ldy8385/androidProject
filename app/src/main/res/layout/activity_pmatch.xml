@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".PMatchActivity"
     android:orientation="vertical"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg2">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

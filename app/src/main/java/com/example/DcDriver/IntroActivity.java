@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -30,6 +32,10 @@ public class IntroActivity extends AppCompatActivity {
         BtnDriver = findViewById(R.id.button);
         BtnPassenger = findViewById(R.id.button2);
 
+        Animation anima = AnimationUtils.loadAnimation(this,R.anim.anim);
+        BtnDriver.setAnimation(anima);
+        BtnPassenger.setAnimation(anima);
+
         BtnDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,15 +53,16 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
-        videoView = (VideoView) findViewById(R.id.videoView);
-        videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.back));
-        videoView.start();
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-            }
-        });
+        // 동영상 배경
+//        videoView = (VideoView) findViewById(R.id.videoView);
+//        videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.back));
+//        videoView.start();
+//        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mp) {
+//                mp.setLooping(true);
+//            }
+//        });
 
 
 

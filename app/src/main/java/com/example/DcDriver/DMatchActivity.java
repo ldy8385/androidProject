@@ -39,12 +39,12 @@ public class DMatchActivity extends AppCompatActivity {
 
         BtnEnd = findViewById(R.id.BtnEnd);
 
-        ArrayList<RowInfo> foodInfoArrayList = new ArrayList<>();
-        foodInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "5,000원"));
-        foodInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "4,600원"));
-        foodInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "4,000원"));
+        ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
+//        foodInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "5,000원"));
+//        foodInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "4,600원"));
+//        foodInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "4,000원"));
 
-        MyAdapter myAdapter = new MyAdapter(foodInfoArrayList);
+        MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
 
         mRecyclerView.setAdapter(myAdapter);
 
@@ -60,8 +60,8 @@ public class DMatchActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         myRefD.child("name").removeValue();
         myRefA.child("name").removeValue();
     }
