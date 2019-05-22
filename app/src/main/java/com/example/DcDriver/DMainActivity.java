@@ -1,14 +1,23 @@
 package com.example.DcDriver;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.ProfileManager;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,6 +46,46 @@ public class DMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dmain);
 
         textView = (TextView) findViewById(R.id.textView);
+        LinearLayout linearLayout = findViewById(R.id.layout);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sp.edit();
+        String data = sp.getString("info","");
+
+
+        TextView textView2 = new TextView(this);
+        EditText editText = new EditText(this);
+        Button button = new Button(this);
+        editText.setHint("차량번호를 입력해주세요");
+        editText.setBackgroundColor(Color.WHITE);
+        editText.setWidth(500);
+        button.setWidth(500);
+        button.setText("저장");
+        textView2.setTextColor(Color.WHITE);
+
+
+        if(data != ""){
+            linearLayout.addView(textView2);
+            textView2.setText("차량번호 : " + data);
+            Log.e("aa","aa");
+        }else{
+            linearLayout.addView(editText);
+            linearLayout.addView(button);
+            Log.e("bb","bb");
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    editor.putString("info",editText.getText().toString());
+                    editor.commit();
+                    editText.setVisibility(View.GONE);
+                    button.setVisibility(View.GONE);
+                    linearLayout.addView(textView2);
+                    textView2.setText("차량번호 : " + data);
+
+                }
+            });
+        }
+
 
         if(userInfo != null){
             name = userInfo.getDisplayName();
@@ -58,13 +107,21 @@ public class DMainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sp.edit();
+        String data = sp.getString("info","");
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                myRefD.setValue(editText.getText().toString());
-                myRefD.child("name").setValue(name);
-                Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
-                startActivity(intent);
+                if(data != ""){
+                    myRefD.child("name").setValue(name);
+                    Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "차량번호를 입력해주세요.", Toast.LENGTH_LONG).show();
+                }
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -72,14 +129,24 @@ public class DMainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                myRefA.setValue(editText.getText().toString());
 //                myRefA.child("bbb").push().setValue(editText.getText().toString());
-                myRefA.child("name").setValue(name);
-                Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
-                startActivity(intent);
+                if(data != ""){
+                    myRefA.child("name").setValue(name);
+                    Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "차량번호를 입력해주세요.", Toast.LENGTH_LONG).show();
+                }
             }
         });
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                SharedPreferences sp = getSharedPreferences("info", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.clear();
+                editor.commit();
+
                 userInfo.delete()
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

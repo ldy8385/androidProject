@@ -38,8 +38,6 @@ public class PMatchActivity extends AppCompatActivity {
     private Button BtnEnd;
     private DatabaseReference mDatabase;
 
-    boolean flag = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
