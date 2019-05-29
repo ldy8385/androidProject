@@ -37,6 +37,7 @@ public class DMainActivity extends AppCompatActivity {
     FirebaseUser userInfo = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference myRefD = database.getReference("d2a");
     DatabaseReference myRefA = database.getReference("a2d");
+    DatabaseReference myRefC = database.getReference("carinfo");
     LoginManager loginManager = LoginManager.getInstance();
 
 
@@ -44,6 +45,14 @@ public class DMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dmain);
+
+        if(userInfo == null){
+            Intent intent = new Intent(DMainActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+            Log.e("asf","aa");
+            return;
+        }
 
         textView = (TextView) findViewById(R.id.textView);
         LinearLayout linearLayout = findViewById(R.id.layout);
@@ -61,6 +70,8 @@ public class DMainActivity extends AppCompatActivity {
         button.setWidth(500);
         button.setText("저장");
         textView2.setTextColor(Color.WHITE);
+        textView2.setTextSize(20);
+        linearLayout.setGravity(Gravity.LEFT);
 
 
         if(data != ""){
@@ -80,24 +91,17 @@ public class DMainActivity extends AppCompatActivity {
                     editText.setVisibility(View.GONE);
                     button.setVisibility(View.GONE);
                     linearLayout.addView(textView2);
-                    textView2.setText("차량번호 : " + data);
-
+                    textView2.setText("차량번호 : " + editText.getText().toString());
+                    myRefC.child("carinfo").setValue(editText.getText().toString());
                 }
             });
         }
 
+        name = userInfo.getDisplayName();
+        textView.setText(name + "님 반갑습니다.");
+        Log.e("sadsad",name);
+        Log.e("sadsad",userInfo.toString());
 
-        if(userInfo != null){
-            name = userInfo.getDisplayName();
-            textView.setText(name + "님 반갑습니다.");
-            Log.e("sadsad",name);
-            Log.e("sadsad",userInfo.toString());
-        }else{
-            Intent intent = new Intent(DMainActivity.this,LoginActivity.class);
-            startActivity(intent);
-            finish();
-            Log.e("asf","aa");
-        }
         btn1 = (Button) findViewById(R.id.button);
         btn2 = (Button) findViewById(R.id.button2);
         loginBtn = findViewById(R.id.login_button);
@@ -142,21 +146,29 @@ public class DMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                SharedPreferences sp = getSharedPreferences("info", Activity.MODE_PRIVATE);
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(DMainActivity.this);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
-                editor.commit();
+                editor.apply();
 
-                userInfo.delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d("aa", "User account deleted.");
-                                }
-                            }
-                        });
+                myRefC.child("carinfo").removeValue();
+
+                Log.e("zxcvxzv","qwrqwrq");
+
+//                userInfo.delete()
+//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                if (task.isSuccessful()) {
+//                                    Log.d("aa", "User account deleted.");
+//                                } else {
+//                                    Log.d("aa", "onComplete: " + task.getException().toString());
+//
+//                                }
+//                            }
+//                        });
                 LoginManager.getInstance().logOut();
+                FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(DMainActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
