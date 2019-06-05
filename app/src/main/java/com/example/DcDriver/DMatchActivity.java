@@ -64,5 +64,7 @@ public class DMatchActivity extends AppCompatActivity {
         super.onDestroy();
         myRefD.child("name").removeValue();
         myRefA.child("name").removeValue();
+        myRefD.child("carnum").removeValue();
+        myRefA.child("carnum").removeValue();
     }
 }

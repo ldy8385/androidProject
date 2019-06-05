@@ -92,7 +92,7 @@ public class DMainActivity extends AppCompatActivity {
                     button.setVisibility(View.GONE);
                     linearLayout.addView(textView2);
                     textView2.setText("차량번호 : " + editText.getText().toString());
-                    myRefC.child("carinfo").setValue(editText.getText().toString());
+//                    myRefC.child("carinfo").setValue(editText.getText().toString());
                 }
             });
         }
@@ -118,9 +118,11 @@ public class DMainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String data = sp.getString("info","");
 //                myRefD.setValue(editText.getText().toString());
                 if(data != ""){
                     myRefD.child("name").setValue(name);
+                    myRefD.child("carnum").setValue(sp.getString("info",""));
                     Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
                     startActivity(intent);
                 }else{
@@ -131,10 +133,12 @@ public class DMainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String data = sp.getString("info","");
 //                myRefA.setValue(editText.getText().toString());
 //                myRefA.child("bbb").push().setValue(editText.getText().toString());
                 if(data != ""){
                     myRefA.child("name").setValue(name);
+                    myRefA.child("carnum").setValue(sp.getString("info",""));
                     Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
                     startActivity(intent);
                 }else{

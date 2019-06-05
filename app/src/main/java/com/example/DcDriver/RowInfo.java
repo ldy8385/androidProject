@@ -2,9 +2,9 @@ package com.example.DcDriver;
 
 public class RowInfo {
     public int drawableId;
-    public String name;
+    public Info name;
 
-    public RowInfo(int drawableId, String name){
+    public RowInfo(int drawableId, Info name){
         this.drawableId = drawableId;
         this.name = name;
     }

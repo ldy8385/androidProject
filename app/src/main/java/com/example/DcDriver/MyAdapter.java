@@ -13,12 +13,14 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPicture;
-        TextView tvPrice;
+        TextView tvName;
+        TextView tvNum;
 
         MyViewHolder(View view){
             super(view);
             ivPicture = view.findViewById(R.id.iv_pic);
-            tvPrice = view.findViewById(R.id.tv_name);
+            tvName = view.findViewById(R.id.tv_name);
+            tvNum = view.findViewById(R.id.tv_name2);
         }
     }
 
@@ -41,7 +43,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
         myViewHolder.ivPicture.setImageResource(rowInfoArrayList.get(position).drawableId);
-        myViewHolder.tvPrice.setText(rowInfoArrayList.get(position).name);
+        myViewHolder.tvName.setText(rowInfoArrayList.get(position).name);
+        myViewHolder.tvNum.setText(rowInfoArrayList.get(position).num);
     }
 
     @Override

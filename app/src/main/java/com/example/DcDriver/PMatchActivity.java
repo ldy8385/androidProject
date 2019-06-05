@@ -30,6 +30,8 @@ public class PMatchActivity extends AppCompatActivity {
     FirebaseUser userInfo = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference myRefD = database.getReference().child("d2a").child("name");
     DatabaseReference myRefA = database.getReference().child("a2d").child("name");
+    DatabaseReference myRefDn = database.getReference().child("d2a").child("carnum");
+    DatabaseReference myRefAn = database.getReference().child("a2d").child("carnum");
     DataSnapshot dataSnapshot;
     String name;
     String value;
@@ -59,9 +61,8 @@ public class PMatchActivity extends AppCompatActivity {
 
         switch (value) {
             case "d2a":
-
                 myRefD.addValueEventListener(new ValueEventListener() {
-                    String id;
+                    Info id;
 
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -69,7 +70,7 @@ public class PMatchActivity extends AppCompatActivity {
                         MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
                         mRecyclerView.setAdapter(myAdapter);
 
-                        id = dataSnapshot.getValue(String.class);
+                        id = dataSnapshot.getValue(Info.class);
                         rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, id));
                         Log.w("a", "Value is: " + id);
                     }
@@ -80,10 +81,30 @@ public class PMatchActivity extends AppCompatActivity {
                         Log.w("a", "Failed to read value.", error.toException());
                     }
                 });
+//                myRefDn.addValueEventListener(new ValueEventListener() {
+//                    String num;
+//
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
+//                        MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
+//                        mRecyclerView.setAdapter(myAdapter);
+//
+//                        num = dataSnapshot.getValue(String.class);
+//                        rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, num));
+//                        Log.w("a", "Value is: " + num);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError error) {
+//                        // Failed to read value
+//                        Log.w("a", "Failed to read value.", error.toException());
+//                    }
+//                });
             break;
             case "a2d" :
                 myRefA.addValueEventListener(new ValueEventListener() {
-                    String id;
+                    Info id;
 
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -91,7 +112,7 @@ public class PMatchActivity extends AppCompatActivity {
                         MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
                         mRecyclerView.setAdapter(myAdapter);
 
-                        id = dataSnapshot.getValue(String.class);
+                        id = dataSnapshot.getValue(Info.class);
                         rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, id));
                         Log.w("a", "Value is: " + id);
                     }
@@ -102,6 +123,26 @@ public class PMatchActivity extends AppCompatActivity {
                         Log.w("a", "Failed to read value.", error.toException());
                     }
                 });
+//                myRefAn.addValueEventListener(new ValueEventListener() {
+//                    String num;
+//
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
+//                        MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
+//                        mRecyclerView.setAdapter(myAdapter);
+//
+//                        num = dataSnapshot.getValue(String.class);
+//                        rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, num));
+//                        Log.w("a", "Value is: " + num);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError error) {
+//                        // Failed to read value
+//                        Log.w("a", "Failed to read value.", error.toException());
+//                    }
+//                });
                 break;
         }
 
