@@ -42,9 +42,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
-        myViewHolder.ivPicture.setImageResource(rowInfoArrayList.get(position).drawableId);
-        myViewHolder.tvName.setText(rowInfoArrayList.get(position).name);
-        myViewHolder.tvNum.setText(rowInfoArrayList.get(position).num);
+//        myViewHolder.ivPicture.setImageResource(rowInfoArrayList.get(position).drawableId);
+        myViewHolder.tvName.setText(rowInfoArrayList.get(position).getName());
+        myViewHolder.tvNum.setText(rowInfoArrayList.get(position).getCarnum());
     }
 
     @Override

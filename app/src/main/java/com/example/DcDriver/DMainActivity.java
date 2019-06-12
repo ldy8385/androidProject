@@ -98,7 +98,7 @@ public class DMainActivity extends AppCompatActivity {
         }
 
         name = userInfo.getDisplayName();
-        textView.setText(name + "님 반갑습니다.");
+        textView.setText(name + "님 안녕하세요.");
         Log.e("sadsad",name);
         Log.e("sadsad",userInfo.toString());
 
@@ -124,6 +124,7 @@ public class DMainActivity extends AppCompatActivity {
                     myRefD.child("name").setValue(name);
                     myRefD.child("carnum").setValue(sp.getString("info",""));
                     Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
+                    intent.putExtra("value","d2a");
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(), "차량번호를 입력해주세요.", Toast.LENGTH_LONG).show();
@@ -140,6 +141,7 @@ public class DMainActivity extends AppCompatActivity {
                     myRefA.child("name").setValue(name);
                     myRefA.child("carnum").setValue(sp.getString("info",""));
                     Intent intent = new Intent(DMainActivity.this, DMatchActivity.class);
+                    intent.putExtra("value","a2d");
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(), "차량번호를 입력해주세요.", Toast.LENGTH_LONG).show();

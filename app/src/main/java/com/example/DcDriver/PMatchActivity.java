@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class PMatchActivity extends AppCompatActivity {
@@ -28,10 +29,9 @@ public class PMatchActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser userInfo = FirebaseAuth.getInstance().getCurrentUser();
-    DatabaseReference myRefD = database.getReference().child("d2a").child("name");
-    DatabaseReference myRefA = database.getReference().child("a2d").child("name");
-    DatabaseReference myRefDn = database.getReference().child("d2a").child("carnum");
-    DatabaseReference myRefAn = database.getReference().child("a2d").child("carnum");
+    DatabaseReference myRefD = database.getReference().child("d2a");
+    DatabaseReference myRefA = database.getReference().child("a2d");
+    DatabaseReference myRefP = database.getReference("passenger");
     DataSnapshot dataSnapshot;
     String name;
     String value;
@@ -62,17 +62,21 @@ public class PMatchActivity extends AppCompatActivity {
         switch (value) {
             case "d2a":
                 myRefD.addValueEventListener(new ValueEventListener() {
-                    Info id;
 
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
+
+                        HashMap<String, String> data = (HashMap<String, String>) dataSnapshot.getValue();
+
+                        if(data != null){
+                            rowInfoArrayList.add(new RowInfo("", data.get("name"), data.get("carnum")));
+                        }else{
+                            rowInfoArrayList.add(new RowInfo("", "운행중인 드라이버가 없습니다.", ""));
+                        }
+
                         MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
                         mRecyclerView.setAdapter(myAdapter);
-
-                        id = dataSnapshot.getValue(Info.class);
-                        rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, id));
-                        Log.w("a", "Value is: " + id);
                     }
 
                     @Override
@@ -81,40 +85,24 @@ public class PMatchActivity extends AppCompatActivity {
                         Log.w("a", "Failed to read value.", error.toException());
                     }
                 });
-//                myRefDn.addValueEventListener(new ValueEventListener() {
-//                    String num;
-//
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
-//                        MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
-//                        mRecyclerView.setAdapter(myAdapter);
-//
-//                        num = dataSnapshot.getValue(String.class);
-//                        rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, num));
-//                        Log.w("a", "Value is: " + num);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError error) {
-//                        // Failed to read value
-//                        Log.w("a", "Failed to read value.", error.toException());
-//                    }
-//                });
+
             break;
             case "a2d" :
                 myRefA.addValueEventListener(new ValueEventListener() {
-                    Info id;
 
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
+
+                        HashMap<String, String> data = (HashMap<String, String>) dataSnapshot.getValue();
+                        if(data != null){
+                            rowInfoArrayList.add(new RowInfo("", data.get("name"), data.get("carnum")));
+                        }else{
+                            rowInfoArrayList.add(new RowInfo("", "운행중인 드라이버가 없습니다.", ""));
+                        }
+
                         MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
                         mRecyclerView.setAdapter(myAdapter);
-
-                        id = dataSnapshot.getValue(Info.class);
-                        rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, id));
-                        Log.w("a", "Value is: " + id);
                     }
 
                     @Override
@@ -123,40 +111,14 @@ public class PMatchActivity extends AppCompatActivity {
                         Log.w("a", "Failed to read value.", error.toException());
                     }
                 });
-//                myRefAn.addValueEventListener(new ValueEventListener() {
-//                    String num;
-//
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        ArrayList<RowInfo> rowInfoArrayList = new ArrayList<>();
-//                        MyAdapter myAdapter = new MyAdapter(rowInfoArrayList);
-//                        mRecyclerView.setAdapter(myAdapter);
-//
-//                        num = dataSnapshot.getValue(String.class);
-//                        rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, num));
-//                        Log.w("a", "Value is: " + num);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError error) {
-//                        // Failed to read value
-//                        Log.w("a", "Failed to read value.", error.toException());
-//                    }
-//                });
                 break;
         }
-
-        /*if(value == "d2a"){
-            rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "aaa"));
-        }else if(value == "a2d"){
-            rowInfoArrayList.add(new RowInfo(R.drawable.ic_launcher_background, "vvv"));
-        }*/
 
         BtnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRefD.child("name").removeValue();
-                myRefA.child("name").removeValue();
+                myRefP.child("d2a").removeValue();
+                myRefP.child("a2d").removeValue();
                 finish();
             }
         });
@@ -172,7 +134,7 @@ public class PMatchActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        myRefD.child("name").removeValue();
-        myRefA.child("name").removeValue();
+        myRefP.child("d2a").removeValue();
+        myRefP.child("a2d").removeValue();
     }
 }

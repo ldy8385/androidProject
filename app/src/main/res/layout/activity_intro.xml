@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DMainActivity"
-    android:background="@drawable/bg2"
+    android:background="#666666"
     android:orientation="vertical"
     android:id="@+id/layout">
 
@@ -29,7 +29,9 @@
         android:layout_marginTop="450dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/button"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:background="#a6000000"
+        android:textColor="#fff"/>
     <Button
         android:layout_width="300dp"
         android:layout_height="80dp"
@@ -39,7 +41,9 @@
         android:layout_marginTop="550dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/button2"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:background="#a6000000"
+        android:textColor="#fff"/>
 
 
 

@@ -6,14 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".PMatchActivity"
     android:orientation="vertical"
-    android:background="@drawable/bg2">
+    android:background="#000">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="드라이버 목록"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#fff"
+        android:textSize="30dp"
+        android:background="#33000000"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#dddddd"
+        android:background="#33000000"
         />
 
     <Button
@@ -22,6 +32,7 @@
         android:text="그만 찾기"
         android:textSize="40dp"
         android:id="@+id/BtnEnd"
+        android:background="#ff00"
         />
 
 </LinearLayout>

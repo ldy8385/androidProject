@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">택시싫어</string>
+    <string name="app_name">카풀</string>
     <string name="facebook_app_id">2258212127831208</string>
     <string name="fb_login_protocol_scheme">fb2258212127831208</string>
 </resources>

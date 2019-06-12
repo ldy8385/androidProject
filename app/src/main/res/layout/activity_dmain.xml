@@ -32,7 +32,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/layout"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="#a6000000"
+        android:textColor="#fff">
 
     </LinearLayout>
 
@@ -43,7 +45,10 @@
         android:layout_marginTop="100dp"
         android:layout_gravity="center"
         android:textSize="30dp"
-        android:text="대림대학교 > 안양역"/>
+        android:text="대림대학교 > 안양역"
+        android:background="#a6000000"
+        android:textColor="#fff"
+        />
 
     <Button
         android:id="@+id/button2"
@@ -52,7 +57,9 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:textSize="30dp"
-        android:text="안양역 > 대림대학교"/>
+        android:text="안양역 > 대림대학교"
+        android:background="#a6000000"
+        android:textColor="#fff"/>
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"

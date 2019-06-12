@@ -27,7 +27,7 @@ public class PMainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser userInfo = FirebaseAuth.getInstance().getCurrentUser();
     LoginManager loginManager = LoginManager.getInstance();
-
+    DatabaseReference myRefP = database.getReference("passenger");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class PMainActivity extends AppCompatActivity {
 
         if(userInfo != null){
             name = userInfo.getDisplayName();
-            textView.setText(name + "님 반갑습니다.");
+            textView.setText(name + "님 안녕하세요.");
             Log.e("sadsad",name);
             Log.e("sadsad",userInfo.toString());
         }else{
@@ -61,6 +61,7 @@ public class PMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PMainActivity.this, PMatchActivity.class);
                 intent.putExtra("value","d2a");
+                myRefP.child("d2a").setValue(name);
                 startActivity(intent);
             }
         });
@@ -69,6 +70,7 @@ public class PMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PMainActivity.this, PMatchActivity.class);
                 intent.putExtra("value","a2d");
+                myRefP.child("a2d").setValue(name);
                 startActivity(intent);
             }
         });
