@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DMainActivity"
-    android:background="#666666"
+    android:background="@drawable/bg1"
     android:orientation="vertical"
     android:id="@+id/layout">
 
@@ -20,6 +20,7 @@
         <!--android:layout_alignParentTop="true"-->
         <!--/>-->
 
+
     <Button
         android:layout_width="300dp"
         android:layout_height="80dp"
@@ -29,21 +30,23 @@
         android:layout_marginTop="450dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/button"
+        android:background="@drawable/btn_bg"
+        android:textColor="#fff"
         android:visibility="gone"
-        android:background="#a6000000"
-        android:textColor="#fff"/>
+        />
     <Button
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:text="승객"
         android:textSize="30dp"
         android:gravity="center"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="570dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/button2"
+        android:background="@drawable/btn_bg"
+        android:textColor="#fff"
         android:visibility="gone"
-        android:background="#a6000000"
-        android:textColor="#fff"/>
+        />
 
 
 

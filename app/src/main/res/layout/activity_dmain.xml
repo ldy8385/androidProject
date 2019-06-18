@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DMainActivity"
-    android:background="@drawable/bg2"
+    android:background="#121212"
     android:orientation="vertical">
 
     <TextView
@@ -28,12 +28,11 @@
         android:textColor="#fff" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="301dp"
+        android:layout_height="100dp"
         android:orientation="vertical"
         android:id="@+id/layout"
         android:layout_gravity="center"
-        android:background="#a6000000"
         android:textColor="#fff">
 
     </LinearLayout>
@@ -46,7 +45,7 @@
         android:layout_gravity="center"
         android:textSize="30dp"
         android:text="대림대학교 > 안양역"
-        android:background="#a6000000"
+        android:background="@drawable/round_bg"
         android:textColor="#fff"
         />
 
@@ -58,7 +57,7 @@
         android:layout_gravity="center"
         android:textSize="30dp"
         android:text="안양역 > 대림대학교"
-        android:background="#a6000000"
+        android:background="@drawable/round_bg"
         android:textColor="#fff"/>
 
     <com.facebook.login.widget.LoginButton

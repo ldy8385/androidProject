@@ -67,7 +67,6 @@ public class IntroActivity extends AppCompatActivity {
 
 
         new Handler().postDelayed(new Runnable() {
-            @Override
             public void run() {
                 BtnDriver.setVisibility(View.VISIBLE);
                 BtnPassenger.setVisibility(View.VISIBLE);

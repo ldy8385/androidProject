@@ -18,7 +18,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
         MyViewHolder(View view){
             super(view);
-            ivPicture = view.findViewById(R.id.iv_pic);
+//            ivPicture = view.findViewById(R.id.iv_pic);
             tvName = view.findViewById(R.id.tv_name);
             tvNum = view.findViewById(R.id.tv_name2);
         }

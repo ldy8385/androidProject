@@ -64,11 +64,13 @@ public class DMainActivity extends AppCompatActivity {
         TextView textView2 = new TextView(this);
         EditText editText = new EditText(this);
         Button button = new Button(this);
+        button.setBackgroundColor(Color.rgb(33,33,33));
         editText.setHint("차량번호를 입력해주세요");
         editText.setBackgroundColor(Color.WHITE);
         editText.setWidth(500);
         button.setWidth(500);
         button.setText("저장");
+        button.setTextColor(Color.WHITE);
         textView2.setTextColor(Color.WHITE);
         textView2.setTextSize(20);
         linearLayout.setGravity(Gravity.LEFT);
