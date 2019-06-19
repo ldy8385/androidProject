@@ -13,9 +13,8 @@
 ***
 
 # 레이아웃 구성
-![1](https://user-images.githubusercontent.com/38491289/54652641-db1e8280-4afa-11e9-992b-6f14247704a6.png) 
-![3](https://user-images.githubusercontent.com/38491289/54652649-dfe33680-4afa-11e9-9d57-46434aed5038.png)
-![2](https://user-images.githubusercontent.com/38491289/54652646-dd80dc80-4afa-11e9-9311-58ea0a04ce40.png) 
+직관적인 큰 버튼 위주 레이아웃
+버튼 선택에 따른 단방향 ui
 ***
 
 # 동작과정
