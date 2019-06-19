@@ -163,18 +163,6 @@ public class DMainActivity extends AppCompatActivity {
 
                 Log.e("zxcvxzv","qwrqwrq");
 
-//                userInfo.delete()
-//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                if (task.isSuccessful()) {
-//                                    Log.d("aa", "User account deleted.");
-//                                } else {
-//                                    Log.d("aa", "onComplete: " + task.getException().toString());
-//
-//                                }
-//                            }
-//                        });
                 LoginManager.getInstance().logOut();
                 FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(DMainActivity.this,LoginActivity.class);
